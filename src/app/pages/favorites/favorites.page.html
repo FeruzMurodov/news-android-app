@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Favorite news</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="favorites.length > 0; else emptyState">
+    <ion-item *ngFor="let news of favorites" (click)="openNewsDetail(news)">
+      <ion-thumbnail slot="start">
+        <img
+          *ngIf="news.urlToImage"
+          [src]="news.urlToImage"
+          alt="Image of news"
+        />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ news.title }}</h2>
+        <p>{{ news.source.name }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #emptyState>
+    <ion-text color="medium">
+      <p class="ion-text-center">There is no favorite news</p>
+    </ion-text>
+  </ng-template>
+</ion-content>

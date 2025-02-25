@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/news"></ion-back-button>
+    </ion-buttons>
+    <ion-title>News details</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleFavorite()">
+        <ion-icon [name]="isFav ? 'heart' : 'heart-outline'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="news">
+  <ion-img
+    *ngIf="news.urlToImage"
+    [src]="news.urlToImage"
+    alt="image of news"
+  ></ion-img>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ news.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ news.description }}</p>
+      <p><strong>Source:</strong> {{news.source.name}}</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-button expand="full" color="primary" [href]="news.url" target="_blank">Read more...</ion-button>
+</ion-content>
