@@ -1,0 +1,7 @@
+{
+  "name": "cinemaworld",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
