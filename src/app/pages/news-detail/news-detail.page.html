@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/news"></ion-back-button>
     </ion-buttons>
@@ -21,9 +21,11 @@
   <ion-card>
     <ion-card-header>
       <ion-card-title>{{ news.title }}</ion-card-title>
+      <ion-text><b>Author:</b> {{ news.author }}</ion-text>
     </ion-card-header>
     <ion-card-content>
       <p>{{ news.description }}</p>
+      <p>{{ news.content }}</p>
       <p><strong>Source:</strong> {{news.source.name}}</p>
     </ion-card-content>
   </ion-card>

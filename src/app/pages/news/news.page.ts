@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
+import { CacheService } from 'src/app/services/cache.service';
+import { NetworkService } from 'src/app/services/network.service';
 import { NewsService } from 'src/app/services/news.service';
 
 @Component({
@@ -10,13 +13,39 @@ import { NewsService } from 'src/app/services/news.service';
 })
 export class NewsPage implements OnInit {
   newsList: any[] = [];
+  isOnline: boolean = true;
 
-  constructor(private newsService: NewsService, private router: Router) {}
+  constructor(
+    private newsService: NewsService,
+    private router: Router,
+    private networkService: NetworkService,
+    private cacheService: CacheService
+  ) {}
 
   ngOnInit() {
-    this.newsService.getNews().subscribe((data) => {
-      this.newsList = data.articles;
+    this.networkService.getNetworkStatus().subscribe((status) => {
+      this.isOnline = status;
+
+      if (this.isOnline) {
+        this.loadNewsFromApi();
+      } else {
+        this.loadNewsFromCache();
+      }
     });
+  }
+
+  async loadNewsFromApi() {
+    try {
+      const response = await firstValueFrom(this.newsService.getNews());
+      this.newsList = response.articles;
+      await this.cacheService.saveNews(this.newsList);
+    } catch (error) {
+      console.error('Loading news failed: ', error);
+    }
+  }
+
+  async loadNewsFromCache() {
+    this.newsList = await this.cacheService.getCachedNews();
   }
 
   openNewsDetail(news: any) {
