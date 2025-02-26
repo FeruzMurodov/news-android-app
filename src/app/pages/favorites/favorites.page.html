@@ -1,6 +1,9 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Favorite news</ion-title>
+<ion-header class="header">
+  <ion-toolbar class="header-toolbar" color="success">
+    <ion-buttons slot="start">
+      <ion-back-button class="header-button" defaultHref="/news"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="header-title">Favorite news</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,7 +19,8 @@
       </ion-thumbnail>
       <ion-label>
         <h2>{{ news.title }}</h2>
-        <p>{{ news.source.name }}</p>
+        <p>{{ news.publishedAt | date:'dd.MM.yyyy'}}</p>
+        <!-- <p>{{ news.source.name }}</p> -->
       </ion-label>
     </ion-item>
   </ion-list>

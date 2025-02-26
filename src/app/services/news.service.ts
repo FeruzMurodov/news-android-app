@@ -12,7 +12,7 @@ export class NewsService {
 
   constructor(private http: HttpClient) {}
 
-  getNews(query: string = 'movies'): Observable<any> {
+  getNews(query: string = 'politics'): Observable<any> {
     const url = `${this.apiUrl}?q=${query}&apiKey=${this.apiKey}`;
     return this.http.get(url);
   }

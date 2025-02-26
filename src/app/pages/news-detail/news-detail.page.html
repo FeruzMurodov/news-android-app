@@ -1,27 +1,27 @@
-<ion-header>
-  <ion-toolbar color="primary">
+<ion-header class="header">
+  <ion-toolbar class="header-toolbar" color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/news"></ion-back-button>
+      <ion-back-button class="header-button" defaultHref="/news"></ion-back-button>
     </ion-buttons>
-    <ion-title>News details</ion-title>
+    <ion-title class="header-title">News details</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="toggleFavorite()">
-        <ion-icon [name]="isFav ? 'heart' : 'heart-outline'"></ion-icon>
+        <ion-icon class="favorite-icon" [name]="isFav ? 'heart' : 'heart-outline'"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="news">
-  <ion-img
-    *ngIf="news.urlToImage"
-    [src]="news.urlToImage"
-    alt="image of news"
-  ></ion-img>
+<ion-content *ngIf="news" class="news-detail">
+  <div class="image-container">
+    <ion-img *ngIf="news.urlToImage" [src]="news.urlToImage" alt="image of news"></ion-img>
+  </div>
+
   <ion-card>
     <ion-card-header>
       <ion-card-title>{{ news.title }}</ion-card-title>
-      <ion-text><b>Author:</b> {{ news.author }}</ion-text>
+      <p><b>Author:</b> {{ news.author }}</p>
+      <hr class="thin-line">
     </ion-card-header>
     <ion-card-content>
       <p>{{ news.description }}</p>
@@ -29,5 +29,7 @@
       <p><strong>Source:</strong> {{news.source.name}}</p>
     </ion-card-content>
   </ion-card>
-  <ion-button expand="full" color="primary" [href]="news.url" target="_blank">Read more...</ion-button>
+
+  <ion-button expand="full" color="primary" [href]="news.url" target="_blank">Read more</ion-button>
+
 </ion-content>

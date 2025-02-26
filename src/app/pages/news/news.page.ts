@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { App } from '@capacitor/app';
+import { Platform } from '@ionic/angular';
 import { firstValueFrom } from 'rxjs';
 import { CacheService } from 'src/app/services/cache.service';
 import { NetworkService } from 'src/app/services/network.service';
@@ -19,7 +21,8 @@ export class NewsPage implements OnInit {
     private newsService: NewsService,
     private router: Router,
     private networkService: NetworkService,
-    private cacheService: CacheService
+    private cacheService: CacheService,
+    private platform: Platform
   ) {}
 
   ngOnInit() {
@@ -50,5 +53,28 @@ export class NewsPage implements OnInit {
 
   openNewsDetail(news: any) {
     this.router.navigate(['/news-detail'], { state: { news } });
+  }
+
+  ionViewDidEnter() {
+    this.platform.backButton.subscribeWithPriority(10, () => {
+      if (this.router.url === '/news') {
+        App.exitApp();
+      }
+    });
+  }
+
+  refreshNews(event: any) {
+    setTimeout(() => {
+      this.networkService.getNetworkStatus().subscribe((status) => {
+        this.isOnline = status;
+
+        if (this.isOnline) {
+          this.loadNewsFromApi();
+        } else {
+          this.loadNewsFromCache();
+        }
+      });
+      event.target.complete();
+    }, 1000);
   }
 }

@@ -35,4 +35,11 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
-@import "./app/pages/news/news.page.scss"
+@import "./app/pages/news/news.page.scss";
+
+@media (max-width: 768px) {
+  .header-toolbar {
+    height: 4.4rem !important;
+    padding-top: 1rem !important;
+  }
+}
