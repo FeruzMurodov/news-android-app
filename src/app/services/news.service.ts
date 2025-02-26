@@ -13,7 +13,7 @@ export class NewsService {
   constructor(private http: HttpClient) {}
 
   getNews(query: string = 'politics'): Observable<any> {
-    const url = `${this.apiUrl}?q=${query}&apiKey=${this.apiKey}`;
+    const url = `${this.apiUrl}?language=ru&q=${query}&apiKey=${this.apiKey}`;
     return this.http.get(url);
   }
 }

@@ -36,7 +36,6 @@ ion-card-title {
   margin-top: 2px;
 }
 
-
 // ion-content {
 //     --background: var(--ion-color-light);
 //     padding: 10px;
@@ -82,9 +81,9 @@ ion-card-title {
 //     width: 100%;
 //   }
 
-  .header-toolbar {
-    height: 5rem;
-    padding-top: 2rem;
+.header-toolbar {
+  height: 5rem;
+  padding-top: 2rem;
 }
 
 // .header-title {
@@ -129,4 +128,15 @@ ion-card-title {
 .favorites-button:active {
   transform: scale(0.95);
   opacity: 0.8;
+}
+
+.published-date {
+  display: flex;
+  align-items: center;
+}
+
+.date-icon{
+  font-size: 18px;
+  color: var(--ion-color-primary);
+  margin-right: 5px;
 }

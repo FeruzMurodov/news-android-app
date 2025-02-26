@@ -63,5 +63,32 @@
     border: none;
     height: 1px;
     background-color: #ddd;
-    margin: 10px 0;
+    margin: 5px 0;
   }
+
+  .author {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .author-icon {
+    font-size: 18px;
+    color: var(--ion-color-primary);
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+
+  .source {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .source-icon {
+    font-size: 18px;
+    color: var(--ion-color-primary);
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+

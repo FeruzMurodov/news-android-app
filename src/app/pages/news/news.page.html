@@ -1,14 +1,14 @@
 <ion-header class="header">
   <ion-toolbar class="header-toolbar" color="primary">
-    <ion-title class="header-title">News</ion-title>
+    <ion-title class="header-title">Новости</ion-title>
     <ion-button class="header-button favorites-button" slot="end" [routerLink]="'/favorites'" color="light">
       <ion-icon name="heart-outline" slot="start"></ion-icon>
-      Favorites</ion-button>
+      Избранные</ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-item *ngIf="!isOnline" color="warning">
-  <ion-label>🔴 No connection. Cached news loaded.</ion-label>
+  <ion-label>🔴 Нет соединения</ion-label>
 </ion-item>
 
 <ion-content>
@@ -19,19 +19,17 @@
 
   <ion-list>
     <ion-card *ngFor="let news of newsList" (click)="openNewsDetail(news)">
-      <!-- <ion-thumbnail slot="start"> -->
       <img
         *ngIf="news.urlToImage"
         [src]="news.urlToImage"
         alt="Image of news"
       />
-      <!-- </ion-thumbnail> -->
-      <!-- <ion-label> -->
       <ion-card-header>  
         <ion-card-title>{{ news.title }}</ion-card-title>
       </ion-card-header>
-      <ion-card-content>
-        <p class="news-date">{{ news.publishedAt | date:'dd.MM.yyyy'}}</p>
+      <ion-card-content class="published-date">
+        <ion-icon name="calendar-outline" class="date-icon"></ion-icon>
+        <p class="news-date">  {{ news.publishedAt | date:'dd.MM.yyyy'}}</p>
     </ion-card-content>
     </ion-card>
   </ion-list>
