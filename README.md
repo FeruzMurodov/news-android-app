@@ -7,3 +7,7 @@
 -Современный стек: Angular 19, Ionic 8, Capacitor 7.
 -Чистая архитектура с разделением на сервисы, страницы и компоненты.
 -Поддержка разных сред (dev/prod) через переменные окружения.
+
+![screen](screenshots/Screenshot%200.png)
+![screen](screenshots/Screenshot%201.png)
+![screen](screenshots/Screenshot%202.png)
